@@ -1,11 +1,16 @@
 import _stylus from "stylus"
-import modularize from "@dashkite/masonry-modularize"
+import modularize from "@dashkite/masonry-export"
 
-stylus = modularize ({ root, source, input }) ->
+render = ({ root, source, input }) ->
   _stylus input
   .include source?.directory
   .include root
   .render()
+
+stylus = [
+  render
+  modularize
+]
 
 export default stylus
 export { stylus }
