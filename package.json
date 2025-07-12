@@ -37,7 +37,7 @@
     "@dashkite/genie-clean": "0.2.0",
     "@dashkite/genie-coffee": "0.2.0",
     "@dashkite/genie-release": "^0.2.3",
-    "@dashkite/masonry-text": "link:../masonry-text"
+    "@dashkite/masonry-text": "0.1.0"
   },
   "dependencies": {
     "stylus": "^0.60.0"
