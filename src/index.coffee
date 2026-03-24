@@ -1,10 +1,12 @@
+import Path from "node:path"
 import _stylus from "stylus"
 import text from "@dashkite/masonry-text"
 
-render = ({ build, source, input }) ->
+render = ({ root, build, source, input }) ->
+  root = build.root ? root
   _stylus input
-  .include source?.directory
-  .include build.root
+  .include Path.join root, source?.directory
+  .include root
   .render()
 
 Presets =
