@@ -5,9 +5,10 @@ import text from "@dashkite/masonry-text"
 render = ({ root, build, source, input }) ->
   root = build.root ? root
   _stylus input
-  .include Path.join root, source?.directory
-  .include root
-  .render()
+    .set "filename", source.path
+    .include Path.join root, source.directory
+    .include root
+    .render()
 
 Presets =
   
@@ -18,11 +19,8 @@ Presets =
     text { context..., input: css }
 
 stylus = ( context ) ->
-  if ( preset = Presets[ context.build.preset ])?
-    await preset context
-  else
-    throw new Error "unknown Stylus preset
-      #{ context.build.preset }"
+  preset = Presets[ context.build.preset ] ? Presets.css
+  preset context
 
 export default stylus
 export { stylus }
